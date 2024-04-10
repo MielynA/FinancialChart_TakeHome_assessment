@@ -8,9 +8,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 In the project directory, you can run:
 
-### `clone https://github.com/yourusername/your-repository-name.git`
+### `clone https://github.com/MielynA/FinancialChart_TakeHome_assessment.git
 
-### `cd your-repository-name`
+### `cd FinancialChart_TakeHome_assessment`
 
 ### `npm install`
 
