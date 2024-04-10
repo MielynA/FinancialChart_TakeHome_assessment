@@ -8,7 +8,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 In the project directory, you can run:
 
-### `clone https://github.com/MielynA/FinancialChart_TakeHome_assessment.git
+### clone https://github.com/MielynA/FinancialChart_TakeHome_assessment.git
 
 ### `cd FinancialChart_TakeHome_assessment`
 
