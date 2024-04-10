@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Line } from "react-chartjs-2";
-// import mockApiResponse from "../tests/__mocks__/financialData";
 import {
   Chart as ChartJS,
   LineElement,
@@ -32,6 +31,7 @@ const FinancialChart = ({ symbol }) => {
       const incomeStatementResponse = await axios.get(
         `https://www.alphavantage.co/query?function=INCOME_STATEMENT&symbol=${symbol}&apikey=${apiKey}`
       );
+      console.log("response", incomeStatementResponse);
       const balanceResponse = await axios.get(
         `https://www.alphavantage.co/query?function=BALANCE_SHEET&symbol=${symbol}&apikey=${apiKey}`
       );
@@ -47,16 +47,9 @@ const FinancialChart = ({ symbol }) => {
         (report) => report.totalRevenue
       );
       const shareHolderEquityData = balanceSheet?.map(
-        (sheet) => sheet.totalShareHolderEquity
+        (sheet) => sheet.totalShareholderEquity
       );
       try {
-        const cacheKey = `${symbol}-financial`;
-        const cachedData = localStorage.getItem(cacheKey);
-
-        if (cachedData) {
-          setChartData(JSON.parse(cachedData));
-          return;
-        }
         setChartData({
           labels: labels,
           datasets: [
@@ -89,7 +82,6 @@ const FinancialChart = ({ symbol }) => {
             },
           ],
         });
-        localStorage.setItem(cacheKey, JSON.stringify(chartData));
       } catch (error) {
         console.error("Error fetching financial data:", error);
         setError("Failed to load financial data.");
